@@ -1,0 +1,38 @@
+
+<br><br><br>
+
+
+
+<div class="container">
+
+    <div class="mb-3">
+        <label for="search" class="form-label">Buscar Item</label>
+        <input type="text" [(ngModel)]="searchItem" class="form-control" >
+  
+      </div>
+    
+
+
+    <br>
+    <table class="table" >
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Native name</th>
+            <th scope="col">Population</th>
+            <th scope="col">Region</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of data | filter:searchItem | paginate: {itemsPerPage: 10, currentPage: pagination }">
+            <th scope="row">{{c.name}}</th>
+            <td>{{c.nativeName}}</td>
+            <td>{{c.population}}</td>
+            <td>{{c.region}}</td>
+          </tr>
+         
+        </tbody>
+      </table>
+    
+      <pagination-controls (pageChange)="pagination = $event"></pagination-controls>
+</div>
